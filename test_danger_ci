@@ -24,4 +24,5 @@ DANGER_TEST_REPO=$1 \
   DANGER_TEST_PR=$2 \
   DANGER_FAKE_CI=yep \
   yarn run danger ci \
-  --dangerfile $3
+  --dangerfile $3 \
+  --text-only
