@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+message="I need repo name, PR number, and Dangerfile, in that order. E.g.\n\n$0 mokagio/some-repo 123 path/to/dangerfile"
+if [ -z "$1" ]; then
+    echo -e "$message"
+    exit 1
+fi
+if [ -z "$2" ]; then
+    echo $message
+    exit 2
+fi
+if [ -z "$3" ]; then
+    echo -e "$message"
+    exit 3
+fi
+
+# set -x here instead than at the top so we don't get the comman names for the
+# checks done above
+set -x
+
+DANGER_TEST_REPO=$1 \
+  DANGER_TEST_PR=$2 \
+  DANGER_FAKE_CI=yep \
+  yarn run danger ci \
+  --dangerfile $3
