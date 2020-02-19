@@ -1,5 +1,7 @@
 {
   "devDependencies": {
-    "danger": "^9.2.10"
-  }
+    "danger": "^9.2.10",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {}
 }
