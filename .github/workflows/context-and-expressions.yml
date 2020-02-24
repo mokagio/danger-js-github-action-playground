@@ -28,6 +28,6 @@ jobs:
           echo "action: $ACTION"
           echo "action is acceptable: $RESULT"
       - name: ✌️
-        if: (github.event.action == 'milestoned') || (github.event.action) == 'demilestoned' && github.event.issue.pull_request != ''
+        if: (github.event.action == 'milestoned' || github.event.action == 'demilestoned') && github.event.issue.pull_request != null
         run: |
           echo "✌️"
