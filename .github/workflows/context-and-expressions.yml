@@ -16,10 +16,10 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Dump Action
         env:
-          ACTION: ${{ toJson(github.event.action) }}
+          ACTION: ${{ github.event.action }}
           #RESULT: ${{ toJson(github.event.action) == "milestoned" || toJson(github.event.action) == "demilestoned" }}
           #RESULT: ${{ toJson(github.event)["action"] }}
-          RESULT: ${{ github.event.action }}
+          RESULT: ${{ (github.event.action == "milestoned") || (github.event.action) == "demilestoned" }}
         run: |
-          echo "$ACTION"
-          echo "$RESULT"
+          echo "action: $ACTION"
+          echo "action is acceptable: $RESULT"
