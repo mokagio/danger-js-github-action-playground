@@ -1,0 +1,13 @@
+name: Experiment with context and expressions
+on:
+  milestone:
+    types: [edited]
+
+jobs:
+  echo:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
