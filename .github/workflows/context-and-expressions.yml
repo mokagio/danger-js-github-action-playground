@@ -1,7 +1,10 @@
 name: Experiment with context and expressions
 on:
-  milestone:
-    types: [edited]
+  # I was hoping that adding or removing a milestone from a PR
+  # would trigger this event, but it doesn't
+  # milestone: types: [edited]
+  issues:
+    types: [milestoned, demilestoned]
 
 jobs:
   echo:
