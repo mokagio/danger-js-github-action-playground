@@ -1,6 +1,6 @@
 name: Experiment with context and expressions
 on:
-  push
+  push:
   # I was hoping that adding or removing a milestone from a PR
   # would trigger this event, but it doesn't
   # milestone: types: [edited]
