@@ -18,7 +18,8 @@ jobs:
         env:
           ACTION: ${{ toJson(github.event.action) }}
           #RESULT: ${{ toJson(github.event.action) == "milestoned" || toJson(github.event.action) == "demilestoned" }}
-          RESULT: ${{ toJson(github.event)["action"] }}
+          #RESULT: ${{ toJson(github.event)["action"] }}
+          RESULT: ${{ github.event.action }}
         run: |
           echo "$ACTION"
           echo "$RESULT"
