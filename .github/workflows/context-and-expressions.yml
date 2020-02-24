@@ -1,5 +1,6 @@
 name: Experiment with context and expressions
 on:
+  push
   # I was hoping that adding or removing a milestone from a PR
   # would trigger this event, but it doesn't
   # milestone: types: [edited]
@@ -10,11 +11,14 @@ jobs:
   echo:
     runs-on: ubuntu-16.04
     steps:
+      # This will run on every push
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - name: Dump Action
+      # This should run only if the action was milestone or demilestoned.
+      - name: Dump Action (only for milestones)
+        if: (github.event.action == 'milestoned') || (github.event.action) == 'demilestoned'
         env:
           ACTION: ${{ github.event.action }}
           #RESULT: ${{ toJson(github.event.action) == "milestoned" || toJson(github.event.action) == "demilestoned" }}
