@@ -14,3 +14,10 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Dump GitHub context
+        env:
+          ACTION: ${{ toJson(github.event.action) }}
+          RESULT: ${{ toJson(github.event.action) == "milestoned" || toJson(github.event.action) == "demilestoned" }}
+        run: |
+          echo "$ACTION";
+          echo "$RESULT"
