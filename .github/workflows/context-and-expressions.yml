@@ -19,7 +19,7 @@ jobs:
           ACTION: ${{ github.event.action }}
           #RESULT: ${{ toJson(github.event.action) == "milestoned" || toJson(github.event.action) == "demilestoned" }}
           #RESULT: ${{ toJson(github.event)["action"] }}
-          RESULT: ${{ (github.event.action == "milestoned") || (github.event.action) == "demilestoned" }}
+          RESULT: ${{ (github.event.action == 'milestoned') || (github.event.action) == 'demilestoned' }}
         run: |
           echo "action: $ACTION"
           echo "action is acceptable: $RESULT"
